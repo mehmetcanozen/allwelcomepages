@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Welcome Pages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>All Welcome Pages</h1>
+  <div class="grid" id="repoGrid"></div>
+  <script>
+    const repos = [
+      { name: "Mehmet Can Özen", url: "https://mehmetcanozen.github.io/talyaproject/" },
+      { name: "İnci Aliyeva", url: "https://incialiyeva.github.io/CodeMind/" },
+      { name: "Göksun Gürel", url: "https://goksungurel.github.io/TalyaStaj-2025/" },
+      { name: "Anıl Berkan Üzrek", url: "https://anphyia.github.io/talya-bilisim-project/" },
+      { name: "Yusuf Taşoğlu", url: "https://yusuftasoglu.github.io/talya-project/" },
+      { name: "Yakup Çelik", url: "https://jacobb00.github.io/UI/" },
+      { name: "Ramazan Seçilmiş", url: "https://lordof11month.github.io/AI_API_Project/" },
+      { name: "Mustafa Can Kartal", url: "https://cankartal01.github.io/URL-Shortener/" },
+      { name: "Melik Savaş", url: "https://meliksavas.github.io/web-scraper/" },
+      { name: "Musa Talat Demir", url: "https://talatd.github.io/talyaProject/" },
+      { name: "Emre Berk Durdu", url: "https://emreberkdurdu.github.io/TalyaStaj_2025/" },
+      { name: "Emir Yavuz", url: "https://emiiryv.github.io/NodeStream/" },
+      { name: "Emre Kemal Aksel", url: "https://cherub26.github.io/talya-project/" },
+      { name: "İrem Özden", url: "https://ozdenirem.github.io/talya-project/" }
+    ];
+    const grid = document.getElementById('repoGrid');
+    repos.forEach(repo => {
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = repo.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = repo.name;
+      grid.appendChild(a);
+    });
+  </script>
+</body>
+</html> 
