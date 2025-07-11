@@ -87,7 +87,14 @@ h1 {
   padding: 0 1.5rem;
 }
 
+.filters-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 .search-wrapper {
+  flex: 1;
   position: relative;
   display: flex;
   align-items: center;
@@ -97,6 +104,76 @@ h1 {
   padding: 0.75rem 1rem;
   box-shadow: 0 4px 12px rgba(30, 41, 59, 0.08);
   transition: all 0.3s ease;
+}
+
+.dropdown-wrapper {
+  position: relative;
+  min-width: 200px;
+}
+
+.project-dropdown {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #e0e7ff;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
+  font-size: 1rem;
+  color: #3a3a40;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.08);
+  transition: all 0.3s ease;
+}
+
+.project-dropdown:focus {
+  border-color: #a5b4fc;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+  transform: translateY(-1px);
+}
+
+.dark-mode .project-dropdown {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #475569;
+  color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .project-dropdown:focus {
+  border-color: #818cf8;
+  box-shadow: 0 4px 20px rgba(165, 180, 252, 0.2);
+}
+
+.dark-mode .project-dropdown option {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.dark-mode .dropdown-icon {
+  color: #94a3b8;
+}
+
+.dropdown-wrapper:focus-within .dropdown-icon {
+  color: #6366f1;
+}
+
+.dark-mode .dropdown-wrapper:focus-within .dropdown-icon {
+  color: #a5b4fc;
 }
 
 .search-wrapper:focus-within {
@@ -370,8 +447,30 @@ h1 {
     margin-bottom: 1.5rem;
   }
   
+  .filters-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .dropdown-wrapper {
+    min-width: unset;
+    width: 100%;
+  }
+
   .search-wrapper {
     padding: 0.6rem 0.8rem;
+  }
+
+  .project-dropdown {
+    padding: 0.6rem 0.8rem;
+    padding-right: 2.25rem;
+    font-size: 0.9rem;
+  }
+
+  .dropdown-icon {
+    right: 0.8rem;
+    width: 18px;
+    height: 18px;
   }
   
   .search-input {

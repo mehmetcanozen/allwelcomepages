@@ -26,24 +26,34 @@
   </button>
   <h1>Talya 2025 Yaz Staj Ekibi</h1>
   <div class="search-container">
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"></circle>
-        <path d="m21 21-4.35-4.35"></path>
-      </svg>
-      <input 
-        type="text" 
-        id="searchInput" 
-        class="search-input" 
-        placeholder="İsim veya proje adıyla ara..."
-        autocomplete="off"
-      />
-      <button id="clearSearch" class="clear-search" style="display: none;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+    <div class="filters-row">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
         </svg>
-      </button>
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="İsim veya proje adıyla ara..."
+          autocomplete="off"
+        />
+        <button id="clearSearch" class="clear-search" style="display: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="dropdown-wrapper">
+        <select id="projectFilter" class="project-dropdown">
+          <option value="">Tüm Projeler</option>
+        </select>
+        <svg class="dropdown-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6,9 12,15 18,9"></polyline>
+        </svg>
+      </div>
     </div>
     <div id="searchResults" class="search-results"></div>
   </div>
@@ -225,6 +235,25 @@
     });
 
     
+    // Populate project dropdown
+    const projectFilter = document.getElementById('projectFilter');
+    const allProjects = new Set();
+    
+    Object.values(projectMapping).forEach(projects => {
+      projects.forEach(project => allProjects.add(project));
+    });
+    
+    // Sort projects alphabetically
+    const sortedProjects = Array.from(allProjects).sort();
+    
+    sortedProjects.forEach(project => {
+      const option = document.createElement('option');
+      option.value = project;
+      option.textContent = project;
+      projectFilter.appendChild(option);
+    });
+
+    
     const searchInput = document.getElementById('searchInput');
     const clearSearch = document.getElementById('clearSearch');
     const searchResults = document.getElementById('searchResults');
@@ -240,7 +269,7 @@
         .replace(/ç/g, 'c');
     }
     
-    function filterCards(searchTerm) {
+    function filterCards(searchTerm = '', selectedProject = '') {
       const normalizedSearch = normalizeText(searchTerm);
       let visibleCount = 0;
       
@@ -248,10 +277,15 @@
         const normalizedName = normalizeText(cardData.name);
         const normalizedProjects = cardData.projects.map(project => normalizeText(project));
         
+        // Check search criteria
         const nameMatch = normalizedName.includes(normalizedSearch);
         const projectMatch = normalizedProjects.some(project => project.includes(normalizedSearch));
+        const searchMatch = searchTerm === '' || nameMatch || projectMatch;
         
-        if (nameMatch || projectMatch || searchTerm === '') {
+        // Check project filter criteria
+        const projectFilterMatch = selectedProject === '' || cardData.projects.includes(selectedProject);
+        
+        if (searchMatch && projectFilterMatch) {
           cardData.element.style.display = 'flex';
           cardData.element.style.opacity = '1';
           visibleCount++;
@@ -261,40 +295,67 @@
         }
       });
       
-      
-      if (searchTerm === '') {
+      // Update search results
+      const hasActiveFilters = searchTerm !== '' || selectedProject !== '';
+      if (!hasActiveFilters) {
         searchResults.textContent = '';
         searchResults.style.display = 'none';
       } else {
         searchResults.style.display = 'block';
         if (visibleCount === 0) {
-          searchResults.textContent = 'Arama kriterlerinize uygun sonuç bulunamadı.';
+          searchResults.textContent = 'Filtreleme kriterlerinize uygun sonuç bulunamadı.';
           searchResults.className = 'search-results no-results';
         } else {
-          searchResults.textContent = `${visibleCount} sonuç bulundu`;
+          let resultText = `${visibleCount} sonuç bulundu`;
+          if (searchTerm && selectedProject) {
+            resultText += ` (arama: "${searchTerm}", proje: "${selectedProject}")`;
+          } else if (searchTerm) {
+            resultText += ` (arama: "${searchTerm}")`;
+          } else if (selectedProject) {
+            resultText += ` (proje: "${selectedProject}")`;
+          }
+          searchResults.textContent = resultText;
           searchResults.className = 'search-results';
         }
       }
       
-      
+      // Update clear search button visibility
       clearSearch.style.display = searchTerm ? 'flex' : 'none';
     }
     
     searchInput.addEventListener('input', (e) => {
-      filterCards(e.target.value);
+      filterCards(e.target.value, projectFilter.value);
+    });
+    
+    projectFilter.addEventListener('change', (e) => {
+      filterCards(searchInput.value, e.target.value);
     });
     
     clearSearch.addEventListener('click', () => {
       searchInput.value = '';
-      filterCards('');
+      filterCards('', projectFilter.value);
       searchInput.focus();
     });
     
+    // Add clear all filters functionality
+    function clearAllFilters() {
+      searchInput.value = '';
+      projectFilter.value = '';
+      filterCards('', '');
+    }
     
+    // Clear filters with Escape key
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        searchInput.value = '';
-        filterCards('');
+        clearAllFilters();
+      }
+    });
+
+    // Add keyboard shortcut for project filter
+    projectFilter.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        clearAllFilters();
+        searchInput.focus();
       }
     });
 
