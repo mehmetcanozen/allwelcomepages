@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talya 2025 Yaz Staj Ekibi</title>
+  <title>Talya 2025 Yaz Staj Ekibi</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -24,9 +24,161 @@
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
     </svg>
   </button>
-  <h1>Talya 2025 Yaz Staj Ekibi</h1>
+  <h1>Talya 2025 Yaz Staj Ekibi</h1>
+  <div class="search-container">
+    <div class="search-wrapper">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <input 
+        type="text" 
+        id="searchInput" 
+        class="search-input" 
+        placeholder="İsim veya proje adıyla ara..."
+        autocomplete="off"
+      />
+      <button id="clearSearch" class="clear-search" style="display: none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
   <div class="grid" id="repoGrid"></div>
   <script>
+
+    const projectMapping = {
+      "Alperen Ulukaya": [
+        "Otel Rezervasyon Sistemi",
+        "SPA Rezervasyon Platformu", 
+        "Rate Shopping Web Scraper"
+      ],
+      "Asude Kayım": [
+        "Otel Rezervasyon Sistemi",
+        "Restoran Rezervasyon Sistemi",
+        "Node.js Website Builder"
+      ],
+      "Musa Talat Demir": [
+        "Otel Rezervasyon Sistemi",
+        "Restoran Rezervasyon Sistemi",
+        "Yapay Zeka Chatbot"
+      ],
+      "Fatih Bilici": [
+        "Otel Rezervasyon Sistemi",
+        "Restoran Rezervasyon Sistemi",
+        "SPA Rezervasyon Platformu",
+        "Yemeksepeti Entegrasyonu"
+      ],
+      "Yusuf Taşoğlu": [
+        "Otel Rezervasyon Sistemi",
+        "Restoran Rezervasyon Sistemi",
+        "SPA Rezervasyon Platformu"
+      ],
+      "İnci Aliyeva": [
+        "Otel Rezervasyon Sistemi",
+        "Restoran Rezervasyon Sistemi",
+        "Monaca ile Kod Editörü"
+      ],
+      "Inji Aliyeva": [
+        "Otel Rezervasyon Sistemi",
+        "Restoran Rezervasyon Sistemi",
+        "Monaca ile Kod Editörü"
+      ],
+      "Melike Esra Öz": [
+        "Restoran Rezervasyon Sistemi",
+        "Yapay Zeka Chatbot",
+        "Rate Shopping Web Scraper"
+      ],
+      "Seher Oğuz": [
+        "Restoran Rezervasyon Sistemi",
+        "Yapay Zeka Chatbot",
+        "Node.js Website Builder",
+        "Rate Shopping Web Scraper"
+      ],
+      "Mustafa Can Kartal": [
+        "Restoran Rezervasyon Sistemi",
+        "Yapay Zeka Chatbot",
+        "Rate Shopping Web Scraper"
+      ],
+      "Anıl Berkan Üzrek": [
+        "Restoran Rezervasyon Sistemi",
+        "SPA Rezervasyon Platformu",
+        "Dosya Hosting & Video Streaming"
+      ],
+      "Berke Erenç": [
+        "Restoran Rezervasyon Sistemi",
+        "Yapay Zeka Chatbot",
+        "Node.js Website Builder",
+        "Rate Shopping Web Scraper"
+      ],
+      "Mehmet Can Kartal": [
+        "Yapay Zeka Chatbot"
+      ],
+      "Mehmet Ayberk Daşar": [
+        "Yapay Zeka Chatbot",
+        "AI API Projesi",
+        "Node.js Website Builder"
+      ],
+      "İrem Özden": [
+        "Yapay Zeka Chatbot",
+        "AI API Projesi",
+        "Node.js Website Builder"
+      ],
+      "Eren Özgür": [
+        "Yapay Zeka Chatbot",
+        "URL Kısaltıcı Uygulaması",
+        "AI API Projesi",
+        "Node.js Website Builder"
+      ],
+      "Göksun Gürel": [
+        "Yapay Zeka Chatbot",
+        "AI API Projesi"
+      ],
+      "Emre Berk Durdu": [
+        "SPA Rezervasyon Platformu",
+        "AI API Projesi",
+        "Dosya Hosting & Video Streaming"
+      ],
+      "Muhammed Fatih Çınar": [
+        "SPA Rezervasyon Platformu",
+        "AI API Projesi"
+      ],
+      "Zeynep Anılgan": [
+        "URL Kısaltıcı Uygulaması"
+      ],
+      "Emre Kemal Aksel": [
+        "URL Kısaltıcı Uygulaması",
+        "Dosya Hosting & Video Streaming"
+      ],
+      "Mehmet Can Özen": [
+        "URL Kısaltıcı Uygulaması",
+        "Yemeksepeti Entegrasyonu"
+      ],
+      "Emir Yavuz": [
+        "URL Kısaltıcı Uygulaması",
+        "Node.js Website Builder",
+        "Dosya Hosting & Video Streaming"
+      ],
+      "Ramazan Seçilmiş": [
+        "URL Kısaltıcı Uygulaması",
+        "AI API Projesi",
+        "Dosya Hosting & Video Streaming"
+      ],
+      "İrem Ilgın İşcan": [
+        "AI API Projesi"
+      ],
+      "Melik Savaş": [
+        "Node.js Website Builder",
+        "Rate Shopping Web Scraper",
+        "Dosya Hosting & Video Streaming"
+      ],
+      "Yakup Çelik": [
+        "Teleform (IaC) DevOps Generator"
+      ]
+    };
 
     const repos = [
       { name: "Mehmet Can Özen", url: "https://mehmetcanozen.github.io/talyaproject/" },
@@ -54,17 +206,132 @@
       { name: "Asude Kayım", url: "https://asudekayim.github.io/Talya-Proje/" },
       { name: "Seher Oğuz", url: "https://seherogz.github.io/AI-ChatBot/" },
       { name: "Berke Erenç", url: "https://berkeerenc.github.io/talya-project/" }
-
     ];
+
     const grid = document.getElementById('repoGrid');
+    let allCards = []; 
+    
     repos.forEach(repo => {
       const a = document.createElement('a');
       a.className = 'card';
       a.href = repo.url;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
-      a.textContent = repo.name;
+      
+   
+      const cardContent = document.createElement('div');
+      cardContent.className = 'card-content';
+      
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'card-name';
+      nameDiv.textContent = repo.name;
+      
+      const projectsDiv = document.createElement('div');
+      projectsDiv.className = 'card-projects';
+      
+      
+      const projects = projectMapping[repo.name] || [];
+      
+      if (projects.length > 0) {
+        projects.forEach(project => {
+          const projectSpan = document.createElement('span');
+          projectSpan.className = 'project-tag';
+          projectSpan.textContent = project;
+          projectsDiv.appendChild(projectSpan);
+        });
+      } else {
+        const noProjectSpan = document.createElement('span');
+        noProjectSpan.className = 'project-tag no-projects';
+        noProjectSpan.textContent = 'Proje bilgisi mevcut değil';
+        projectsDiv.appendChild(noProjectSpan);
+      }
+      
+      cardContent.appendChild(nameDiv);
+      cardContent.appendChild(projectsDiv);
+      a.appendChild(cardContent);
+      
+      
+      allCards.push({
+        element: a,
+        name: repo.name,
+        projects: projects
+      });
+      
       grid.appendChild(a);
+    });
+
+    
+    const searchInput = document.getElementById('searchInput');
+    const clearSearch = document.getElementById('clearSearch');
+    const searchResults = document.getElementById('searchResults');
+    
+    
+    function normalizeText(text) {
+      return text.toLowerCase()
+        .replace(/ğ/g, 'g')
+        .replace(/ü/g, 'u')
+        .replace(/ş/g, 's')
+        .replace(/ı/g, 'i')
+        .replace(/ö/g, 'o')
+        .replace(/ç/g, 'c');
+    }
+    
+    function filterCards(searchTerm) {
+      const normalizedSearch = normalizeText(searchTerm);
+      let visibleCount = 0;
+      
+      allCards.forEach(cardData => {
+        const normalizedName = normalizeText(cardData.name);
+        const normalizedProjects = cardData.projects.map(project => normalizeText(project));
+        
+        const nameMatch = normalizedName.includes(normalizedSearch);
+        const projectMatch = normalizedProjects.some(project => project.includes(normalizedSearch));
+        
+        if (nameMatch || projectMatch || searchTerm === '') {
+          cardData.element.style.display = 'flex';
+          cardData.element.style.opacity = '1';
+          visibleCount++;
+        } else {
+          cardData.element.style.display = 'none';
+          cardData.element.style.opacity = '0';
+        }
+      });
+      
+      
+      if (searchTerm === '') {
+        searchResults.textContent = '';
+        searchResults.style.display = 'none';
+      } else {
+        searchResults.style.display = 'block';
+        if (visibleCount === 0) {
+          searchResults.textContent = 'Arama kriterlerinize uygun sonuç bulunamadı.';
+          searchResults.className = 'search-results no-results';
+        } else {
+          searchResults.textContent = `${visibleCount} sonuç bulundu`;
+          searchResults.className = 'search-results';
+        }
+      }
+      
+      
+      clearSearch.style.display = searchTerm ? 'flex' : 'none';
+    }
+    
+    searchInput.addEventListener('input', (e) => {
+      filterCards(e.target.value);
+    });
+    
+    clearSearch.addEventListener('click', () => {
+      searchInput.value = '';
+      filterCards('');
+      searchInput.focus();
+    });
+    
+    
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        filterCards('');
+      }
     });
 
    
