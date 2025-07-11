@@ -51,132 +51,96 @@
   <script>
 
     const projectMapping = {
-      "Alperen Ulukaya": [
-        "Otel Rezervasyon Sistemi",
-        "SPA Rezervasyon Platformu", 
-        "Rate Shopping Web Scraper"
-      ],
-      "Asude Kayım": [
-        "Otel Rezervasyon Sistemi",
-        "Restoran Rezervasyon Sistemi",
-        "Node.js Website Builder"
-      ],
-      "Musa Talat Demir": [
-        "Otel Rezervasyon Sistemi",
-        "Restoran Rezervasyon Sistemi",
-        "Yapay Zeka Chatbot"
-      ],
-      "Fatih Bilici": [
-        "Otel Rezervasyon Sistemi",
-        "Restoran Rezervasyon Sistemi",
-        "SPA Rezervasyon Platformu",
-        "Yemeksepeti Entegrasyonu"
-      ],
-      "Yusuf Taşoğlu": [
-        "Otel Rezervasyon Sistemi",
-        "Restoran Rezervasyon Sistemi",
-        "SPA Rezervasyon Platformu"
-      ],
-      "İnci Aliyeva": [
-        "Otel Rezervasyon Sistemi",
-        "Restoran Rezervasyon Sistemi",
-        "Monaca ile Kod Editörü"
-      ],
-      "Inji Aliyeva": [
-        "Otel Rezervasyon Sistemi",
-        "Restoran Rezervasyon Sistemi",
-        "Monaca ile Kod Editörü"
-      ],
       "Melike Esra Öz": [
-        "Restoran Rezervasyon Sistemi",
         "Yapay Zeka Chatbot",
-        "Rate Shopping Web Scraper"
-      ],
-      "Seher Oğuz": [
-        "Restoran Rezervasyon Sistemi",
-        "Yapay Zeka Chatbot",
-        "Node.js Website Builder",
-        "Rate Shopping Web Scraper"
-      ],
-      "Mustafa Can Kartal": [
-        "Restoran Rezervasyon Sistemi",
-        "Yapay Zeka Chatbot",
-        "Rate Shopping Web Scraper"
-      ],
-      "Anıl Berkan Üzrek": [
-        "Restoran Rezervasyon Sistemi",
-        "SPA Rezervasyon Platformu",
-        "Dosya Hosting & Video Streaming"
+        "Node.js Website Builder"
       ],
       "Berke Erenç": [
-        "Restoran Rezervasyon Sistemi",
         "Yapay Zeka Chatbot",
-        "Node.js Website Builder",
-        "Rate Shopping Web Scraper"
-      ],
-      "Mehmet Can Kartal": [
-        "Yapay Zeka Chatbot"
-      ],
-      "Mehmet Ayberk Daşar": [
-        "Yapay Zeka Chatbot",
-        "AI API Projesi",
-        "Node.js Website Builder"
-      ],
-      "İrem Özden": [
-        "Yapay Zeka Chatbot",
-        "AI API Projesi",
-        "Node.js Website Builder"
-      ],
-      "Eren Özgür": [
-        "Yapay Zeka Chatbot",
-        "URL Kısaltıcı Uygulaması",
-        "AI API Projesi",
         "Node.js Website Builder"
       ],
       "Göksun Gürel": [
         "Yapay Zeka Chatbot",
         "AI API Projesi"
       ],
-      "Emre Berk Durdu": [
-        "SPA Rezervasyon Platformu",
-        "AI API Projesi",
-        "Dosya Hosting & Video Streaming"
+      "Ahmet Eren Özgür": [
+        "Yapay Zeka Chatbot"
       ],
-      "Muhammed Fatih Çınar": [
-        "SPA Rezervasyon Platformu",
+      "Seher Oğuz": [
+        "Yapay Zeka Chatbot",
+        "Node.js Website Builder"
+      ],
+      "Mehmet Ayberk Daşar": [
+        "Yapay Zeka Chatbot",
         "AI API Projesi"
       ],
-      "Zeynep Anılgan": [
+      "İrem Özden": [
+        "Yapay Zeka Chatbot",
+        "AI API Projesi"
+      ],
+      "Alperen Ulukaya": [
+        "Otel Rezervasyon Sistemi",
+        "AI API Projesi"
+      ],
+      "Musa Talat Demir": [
+        "Otel Rezervasyon Sistemi",
+        "Rate Shopping Web Scraper"
+      ],
+      "Fatih Bilici": [
+        "Otel Rezervasyon Sistemi",
+        "Rate Shopping Web Scraper"
+      ],
+      "Yusuf Taşoğlu": [
+        "Otel Rezervasyon Sistemi",
+        "Rate Shopping Web Scraper"
+      ],
+      "Asude Kayım": [
+        "Otel Rezervasyon Sistemi"
+      ],
+      "Mehmet Can Özen": [
+        "URL Kısaltıcı Uygulaması",
+        "Rate Shopping Web Scraper"
+      ],
+      "Mustafa Can Kartal": [
+        "URL Kısaltıcı Uygulaması"
+      ],
+      "Özgür Cansız": [
         "URL Kısaltıcı Uygulaması"
       ],
       "Emre Kemal Aksel": [
         "URL Kısaltıcı Uygulaması",
         "Dosya Hosting & Video Streaming"
       ],
-      "Mehmet Can Özen": [
-        "URL Kısaltıcı Uygulaması",
-        "Yemeksepeti Entegrasyonu"
+      "Melik Savaş": [
+        "Dosya Hosting & Video Streaming",
+        "Rate Shopping Web Scraper"
       ],
       "Emir Yavuz": [
-        "URL Kısaltıcı Uygulaması",
-        "Node.js Website Builder",
         "Dosya Hosting & Video Streaming"
       ],
       "Ramazan Seçilmiş": [
-        "URL Kısaltıcı Uygulaması",
-        "AI API Projesi",
-        "Dosya Hosting & Video Streaming"
-      ],
-      "İrem Ilgın İşcan": [
+        "Dosya Hosting & Video Streaming",
         "AI API Projesi"
       ],
-      "Melik Savaş": [
-        "Node.js Website Builder",
-        "Rate Shopping Web Scraper",
-        "Dosya Hosting & Video Streaming"
+      "Anıl Berkan Üzrek": [
+        "Restoran Rezervasyon Sistemi"
+      ],
+      "İnci Aliyeva": [
+        "Monaca ile Kod Editörü"
       ],
       "Yakup Çelik": [
         "Teleform (IaC) DevOps Generator"
+      ],
+      "Muhammed Fatih Çınar": [
+        "Yemeksepeti Entegrasyonu"
+      ],
+      "Zeynep Anılgan": [
+        "URL Kısaltıcı Uygulaması"
+      ],
+      "Emre Berk Durdu": [
+        "Dosya Hosting & Video Streaming",
+        "AI API Projesi",
+        "SPA Rezervasyon Platformu"
       ]
     };
 
@@ -195,7 +159,7 @@
       { name: "Emir Yavuz", url: "https://emiiryv.github.io/NodeStream/" },
       { name: "Emre Kemal Aksel", url: "https://cherub26.github.io/talya-project/" },
       { name: "İrem Özden", url: "https://ozdenirem.github.io/talya-project/" },
-      { name: "Eren Özgür", url: "https://erenozgur.github.io/welcome/" },
+      { name: "Ahmet Eren Özgür", url: "https://erenozgur.github.io/welcome/" },
       { name: "Zeynep Anılgan", url: "https://sanilgan.github.io/URL-Shortener-Application/" },
       { name: "Muhammed Fatih Çınar", url: "https://fatih045.github.io/fatihcinar/" },
       { name: "Mehmet Ayberk Daşar", url: "https://mayberkdasar.github.io/talya-project/" },
