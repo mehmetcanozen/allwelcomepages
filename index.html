@@ -60,158 +60,142 @@
   <div class="grid" id="repoGrid"></div>
   <script>
 
+
+
+    /*
+    ----------------------------------------------------------------------------------------
+    dear contributers:
+    please write the project name and the url of the project in the projectMapping object
+    ----------------------------------------------------------------------------------------
+    */
     const projectMapping = {
       "Melike Esra Öz": [
-        "Yapay Zeka Chatbot",
-        "Node.js Website Builder"
-      ],
-      "Berke Erenç": [
-        "Yapay Zeka Chatbot",
-        "Node.js Website Builder"
+        {name: "Yapay Zeka Chatbot", url: "https://melikesraoz.github.io/talya-internship-project/"},
+        {name: "Node.js Website Builder", url: "https://melikesraoz.github.io/talya-internship-project/"}
       ],
       "Göksun Gürel": [
-        "Yapay Zeka Chatbot",
-        "AI API Projesi"
+        {name: "Yapay Zeka Chatbot", url: "https://goksungurel.github.io/TalyaStaj-2025/"},
+        {name: "AI API Projesi", url: "https://goksungurel.github.io/TalyaStaj-2025/"}
       ],
       "Ahmet Eren Özgür": [
-        "Yapay Zeka Chatbot"
+        {name: "Yapay Zeka Chatbot", url: "https://erenozgur.github.io/welcome/"}
       ],
       "Seher Oğuz": [
-        "Yapay Zeka Chatbot",
-        "Node.js Website Builder"
+        {name: "Yapay Zeka Chatbot", url: "https://seherogz.github.io/AI-ChatBot/"},
+        {name: "Node.js Website Builder", url: "https://seherogz.github.io/AI-ChatBot/"}
       ],
       "Mehmet Ayberk Daşar": [
-        "Yapay Zeka Chatbot",
-        "AI API Projesi"
+        {name: "Yapay Zeka Chatbot", url: "https://mayberkdasar.github.io/talya-project/"},
+        {name: "AI API Projesi", url: "https://mayberkdasar.github.io/talya-project/"}
       ],
       "İrem Özden": [
-        "Yapay Zeka Chatbot",
-        "AI API Projesi"
+        {name: "Yapay Zeka Chatbot", url: "https://ozdenirem.github.io/talya-project/"},
+        {name: "AI API Projesi", url: "https://ozdenirem.github.io/talya-project/"}
       ],
       "Alperen Ulukaya": [
-        "Otel Rezervasyon Sistemi",
-        "AI API Projesi"
+        {name: "Otel Rezervasyon Sistemi", url: "https://ulukayalperen7.github.io/WELCOME-TALYA-2025/"},
+        {name: "AI API Projesi", url: "https://ulukayalperen7.github.io/WELCOME-TALYA-2025/"}
       ],
       "Musa Talat Demir": [
-        "Otel Rezervasyon Sistemi",
-        "Rate Shopping Web Scraper"
+        {name: "Otel Rezervasyon Sistemi", url: "https://talatd.github.io/talyaProject/"},
+        {name: "Rate Shopping Web Scraper", url: "https://talatd.github.io/talyaProject/"}
       ],
       "Fatih Bilici": [
-        "Otel Rezervasyon Sistemi",
-        "Rate Shopping Web Scraper"
+        {name: "Otel Rezervasyon Sistemi", url: "https://fatihbilig.github.io/ReservationSiteNow/"},
+        {name: "Rate Shopping Web Scraper", url: "https://fatihbilig.github.io/ReservationSiteNow/"}
       ],
       "Yusuf Taşoğlu": [
-        "Rate Shopping Web Scraper"
+        {name: "Rate Shopping Web Scraper", url: "https://yusuftasoglu.github.io/talya-project/"}
       ],
       "Asude Kayım": [
-        "Otel Rezervasyon Sistemi"
+        {name: "Otel Rezervasyon Sistemi", url: "https://asudekayim.github.io/Talya-Proje/"}
       ],
       "Mehmet Can Özen": [
-        "URL Kısaltıcı Uygulaması",
-        "Rate Shopping Web Scraper"
+        {name: "URL Kısaltıcı Uygulaması", url: "https://mehmetcanozen.github.io/talyaproject/"},
+        {name: "Rate Shopping Web Scraper", url: "https://mehmetcanozen.github.io/talyaproject/"}
       ],
       "Mustafa Can Kartal": [
-        "URL Kısaltıcı Uygulaması",
-        "Rate Shopping Web Scraper"
+        {name: "URL Kısaltıcı Uygulaması", url: "https://cankartal01.github.io/URL-Shortener/"},
+        {name: "Rate Shopping Web Scraper", url: "https://cankartal01.github.io/URL-Shortener/"}
       ],
       "Özgür Cansız": [
-        "URL Kısaltıcı Uygulaması"
+        {name: "URL Kısaltıcı Uygulaması", url: "https://linkhub.freecnsz.com/"}
       ],
       "Emre Kemal Aksel": [
-        "URL Kısaltıcı Uygulaması",
-        "Dosya Hosting & Video Streaming"
+        {name: "URL Kısaltıcı Uygulaması", url: "https://cherub26.github.io/talya-project/"},
+        {name: "Dosya Hosting & Video Streaming", url: "https://cherub26.github.io/talya-project/"}
       ],
       "Melik Savaş": [
-        "Dosya Hosting & Video Streaming",
-        "Rate Shopping Web Scraper"
+        {name: "Dosya Hosting & Video Streaming", url: "https://meliksavas.github.io/web-scraper/"},
+        {name: "Rate Shopping Web Scraper", url: "https://meliksavas.github.io/web-scraper/"}
       ],
       "Emir Yavuz": [
-        "Dosya Hosting & Video Streaming",
-        "URL Kısaltıcı Uygulaması"
+        {name: "Dosya Hosting & Video Streaming", url: "https://emiiryv.github.io/talyaprojects/"},
+        {name: "URL Kısaltıcı Uygulaması", url: "https://emiiryv.github.io/talyaprojects/"}
       ],
       "Ramazan Seçilmiş": [
-        "Dosya Hosting & Video Streaming",
-        "AI API Projesi"
+        {name: "Dosya Hosting & Video Streaming", url: "https://lordof11month.github.io/Streaming_Platfrom/"},
+        {name:"AI API Projesi", url: "https://lordof11month.github.io/AI_API_Project/"}
       ],
       "Anıl Berkan Üzrek": [
-        "Restoran Rezervasyon Sistemi"
+        {name: "Restoran Rezervasyon Sistemi", url: "https://anphyia.github.io/talya-bilisim-project/"}
       ],
       "İnci Aliyeva": [
-        "Monaco ile Kod Editörü"
+        {name: "Monaco ile Kod Editörü", url: "https://incialiyeva.github.io/CodeMind/"}
       ],
       "Yakup Çelik": [
-        "Teleform (IaC) DevOps Generator"
+        {name: "Teleform (IaC) DevOps Generator", url: "https://jacobb00.github.io/UI/"}
       ],
       "Muhammed Fatih Çınar": [
-        "Yemeksepeti Entegrasyonu"
+        {name: "Yemeksepeti Entegrasyonu", url: "https://fatih045.github.io/fatihcinar/"}
       ],
       "Zeynep Anılgan": [
-        "URL Kısaltıcı Uygulaması"
+        {name: "URL Kısaltıcı Uygulaması", url: "https://sanilgan.github.io/URL-Shortener-Application/"}
       ],
       "Emre Berk Durdu": [
-        "Dosya Hosting & Video Streaming",
-        "AI API Projesi",
-        "SPA Rezervasyon Platformu"
+        {name: "Dosya Hosting & Video Streaming", url: "https://emreberkdurdu.github.io/TalyaStaj_2025/"},
+        {name: "AI API Projesi", url: "https://emreberkdurdu.github.io/TalyaStaj_2025/"},
+        {name: "SPA Rezervasyon Platformu", url: "https://emreberkdurdu.github.io/TalyaStaj_2025/"}
+      ],
+      "Berke Erenç": [
+        {name: "Node.js Website Builder", url: "https://berkeerenc.github.io/talya-project/"},
+        {name: "Yapay Zeka Chatbot", url: "https://berkeerenc.github.io/talya-project/"}
       ]
     };
 
-    const repos = [
-      { name: "Mehmet Can Özen", url: "https://mehmetcanozen.github.io/talyaproject/" },
-      { name: "İnci Aliyeva", url: "https://incialiyeva.github.io/CodeMind/" },
-      { name: "Göksun Gürel", url: "https://goksungurel.github.io/TalyaStaj-2025/" },
-      { name: "Anıl Berkan Üzrek", url: "https://anphyia.github.io/talya-bilisim-project/" },
-      { name: "Yusuf Taşoğlu", url: "https://yusuftasoglu.github.io/talya-project/" },
-      { name: "Yakup Çelik", url: "https://jacobb00.github.io/UI/" },
-      { name: "Ramazan Seçilmiş", url: "https://lordof11month.github.io/AI_API_Project/" },
-      { name: "Mustafa Can Kartal", url: "https://cankartal01.github.io/URL-Shortener/" },
-      { name: "Melik Savaş", url: "https://meliksavas.github.io/web-scraper/" },
-      { name: "Musa Talat Demir", url: "https://talatd.github.io/talyaProject/" },
-      { name: "Emre Berk Durdu", url: "https://emreberkdurdu.github.io/TalyaStaj_2025/" },
-      { name: "Emir Yavuz", url: "https://emiiryv.github.io/talyaprojects/" },
-      { name: "Emre Kemal Aksel", url: "https://cherub26.github.io/talya-project/" },
-      { name: "İrem Özden", url: "https://ozdenirem.github.io/talya-project/" },
-      { name: "Ahmet Eren Özgür", url: "https://erenozgur.github.io/welcome/" },
-      { name: "Zeynep Anılgan", url: "https://sanilgan.github.io/URL-Shortener-Application/" },
-      { name: "Muhammed Fatih Çınar", url: "https://fatih045.github.io/fatihcinar/" },
-      { name: "Mehmet Ayberk Daşar", url: "https://mayberkdasar.github.io/talya-project/" },
-      { name: "Alperen Ulukaya", url: "https://ulukayalperen7.github.io/WELCOME-TALYA-2025/" },
-      { name: "Melike Esra Öz", url: "https://melikesraoz.github.io/talya-internship-project/" },
-      { name: "Fatih Bilici", url: "https://fatihbilig.github.io/ReservationSiteNow/" },
-      { name: "Özgür Cansız", url: "https://linkhub.freecnsz.com/" },
-      { name: "Asude Kayım", url: "https://asudekayim.github.io/Talya-Proje/" },
-      { name: "Seher Oğuz", url: "https://seherogz.github.io/AI-ChatBot/" },
-      { name: "Berke Erenç", url: "https://berkeerenc.github.io/talya-project/" }
-    ];
 
+    //Inıtializing the grid and defining the card object
     const grid = document.getElementById('repoGrid');
-    let allCards = []; 
-    
-    repos.forEach(repo => {
+    let allCards = [];
+
+    Object.keys(projectMapping).forEach(name => {
+      const projects = projectMapping[name] || [];
+      
       const a = document.createElement('a');
       a.className = 'card';
-      a.href = repo.url;
+      if (projects.length > 0) {
+        a.href = projects[0].url;
+      } else {
+        a.href = '#';
+      }
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
       
-   
       const cardContent = document.createElement('div');
       cardContent.className = 'card-content';
       
       const nameDiv = document.createElement('div');
       nameDiv.className = 'card-name';
-      nameDiv.textContent = repo.name;
+      nameDiv.textContent = name;
       
       const projectsDiv = document.createElement('div');
       projectsDiv.className = 'card-projects';
-      
-      
-      const projects = projectMapping[repo.name] || [];
       
       if (projects.length > 0) {
         projects.forEach(project => {
           const projectSpan = document.createElement('span');
           projectSpan.className = 'project-tag';
-          projectSpan.textContent = project;
+          projectSpan.textContent = project.name;
           projectsDiv.appendChild(projectSpan);
         });
       } else {
@@ -225,11 +209,10 @@
       cardContent.appendChild(projectsDiv);
       a.appendChild(cardContent);
       
-      
       allCards.push({
         element: a,
-        name: repo.name,
-        projects: projects
+        name: name,
+        projects: projects.map(p => p.name)
       });
       
       grid.appendChild(a);
@@ -241,7 +224,7 @@
     const allProjects = new Set();
     
     Object.values(projectMapping).forEach(projects => {
-      projects.forEach(project => allProjects.add(project));
+      projects.forEach(project => allProjects.add(project.name));
     });
     
     // Sort projects alphabetically
